@@ -7,13 +7,13 @@ import PacyorkyGameMobileApplication from "./components/mobileApp/PacyorkyGameMo
 Vue.use(Router)
 
 export default new Router ({
-    mode: 'history',
-    routes: [
-        {
-            path: '',
-            components: {
-                desktop: PacyorkyGameDesktopApplication,
-                mobile: PacyorkyGameMobileApplication
-            }
-        }]
+  mode: 'history',
+  routes: [
+    {
+      path: '',
+      components: {
+        desktop: PacyorkyGameDesktopApplication,
+        mobile: PacyorkyGameMobileApplication
+      }
+    }]
 })

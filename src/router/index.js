@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from 'vue-router'
-import PacyorkyGameDesktopApplication from "./components/desktopApp/PacyorkyGameDesktopApplication";
-import PacyorkyGameMobileApplication from "./components/mobileApp/PacyorkyGameMobileApplication";
+import PacyorkyGameDesktopApplication from "../components/desktopApp/PacyorkyGameDesktopApplication";
+import PacyorkyGameMobileApplication from "../components/mobileApp/PacyorkyGameMobileApplication";
 
 
 Vue.use(Router)

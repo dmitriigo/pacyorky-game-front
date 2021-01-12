@@ -1,10 +1,11 @@
 <template>
   <div>
-  <PacyorkyGameMobileApplication v-if="isMobile"/>
-  <router-view v-else name="desktop"></router-view>
     <b-container fluid="true">
       <NavBar/>
     </b-container>
+  <PacyorkyGameMobileApplication v-if="isMobile"/>
+  <router-view v-else name="desktop"></router-view>
+
     </div>
 </template>
 

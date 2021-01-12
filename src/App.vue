@@ -1,15 +1,19 @@
 <template>
+  <div>
   <PacyorkyGameMobileApplication v-if="isMobile"/>
   <router-view v-else name="desktop"></router-view>
+    <b-container fluid="true">
+      <NavBar/>
+    </b-container>
+    </div>
 </template>
 
 <script>
 import PacyorkyGameMobileApplication from "./components/mobileApp/PacyorkyGameMobileApplication";
-
-
+import NavBar from "@/components/desktopApp/NavBar";
 export default {
   name: 'App',
-  components: {PacyorkyGameMobileApplication},
+  components: {PacyorkyGameMobileApplication, NavBar},
   computed: {
     isMobile: function() {
       var check = false;
@@ -18,6 +22,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="less">

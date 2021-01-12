@@ -4,9 +4,8 @@ import PacyorkyGameDesktopApplication from "../components/desktopApp/PacyorkyGam
 import PacyorkyGameMobileApplication from "../components/mobileApp/PacyorkyGameMobileApplication";
 
 
-
 Vue.use(Router)
-export default new Router ({
+export default new Router({
   mode: 'history',
   routes: [
     {
@@ -15,5 +14,5 @@ export default new Router ({
         desktop: PacyorkyGameDesktopApplication,
         mobile: PacyorkyGameMobileApplication
       }
-    },]
+    }]
 })

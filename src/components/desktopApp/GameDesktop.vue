@@ -35,19 +35,19 @@
           <b-col v-if="playersCards.dishes.length > 0">
             dishes
             <img v-for="dish in playersCards.dishes" style="height: auto; width: 50%"
-                 :src="require('@/assets/cards/character/'+dish.name)">
+                 :src="getUrl('dishes', dish.name)">
           </b-col>
           <b-col v-if="playersCards.stuff.length > 0">
             stuff
             <img v-for="stuff in playersCards.stuff"
                  style="height: auto; width: 50%"
-                 :src="require('@/assets/cards/character/'+stuff.name)">
+                 :src="getUrl('stuff', stuff.name)">
           </b-col>
           <b-col v-if="playersCards.rituals.length > 0">
             rituals
             <img v-for="ritual in playersCards.rituals"
                  style="height: auto; width: 50%"
-                 :src="require('@/assets/cards/character/'+ritual.name)">
+                 :src="getUrl('rituals', ritual.name)">
           </b-col>
         </b-row>
       </b-col>
@@ -98,6 +98,12 @@ export default {
         this.playersCards.character = res.data.character;
         let playerDeck = res.data.deck;
         for (let field in this.playersCards) {
+          console.log(playerDeck)
+          for (let card of playerDeck) {
+            if (card.cardType.toLowerCase() === field) {
+              this.playersCards[field].push(card);
+            }
+          }
           console.log(field)
         }
       })

@@ -5,6 +5,7 @@
         <p>{{$ml.get('name')}}: {{game.name}}</p>
         <p>{{$ml.get('capacity')}}: {{game.capacity}}</p>
         <p>{{$ml.get('current_players')}}: {{game.players.length}}</p>
+        <router-link class="btn btn-secondary" :to="'/game/'+game.id">{{$ml.get('join')}}</router-link>
       </b-jumbotron>
       <div v-if="!hasGames">
         <h1>{{ $ml.get('please_add_new_game') }}</h1>
@@ -87,7 +88,6 @@ export default {
     init: function () {
       axios.get('/api/games').then(response => {
         this.games = response.data
-        console.log(this.games)
       });
     },
     initRequest: function () {

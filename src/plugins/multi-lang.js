@@ -17,7 +17,8 @@ export default new MLCreate({
             private: 'Приватная комната',
             password: 'Пароль',
             name: 'Название',
-            current_players: "Игроков сейчас"
+            current_players: 'Игроков сейчас',
+            join: 'Войти в игру'
         })
     ]
 })

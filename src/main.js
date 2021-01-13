@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/bootstrap-vue'
 import './plugins/axios'
 import './plugins/multi-lang'
+import './plugins/moment'
 
 
 Vue.config.productionTip = false

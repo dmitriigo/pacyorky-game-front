@@ -5,8 +5,7 @@ import PacyorkyGameMobileApplication from "../components/mobileApp/PacyorkyGameM
 
 
 Vue.use(Router)
-
-export default new Router ({
+export default new Router({
   mode: 'history',
   routes: [
     {

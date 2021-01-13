@@ -2,17 +2,18 @@
   <div>
     <NavBar/>
     <PacyorkyGameMobileApplication v-if="isMobile"/>
-    <router-view v-else name="desktop"></router-view>
+    <PacyorkyGameDesktopApplication v-else/>
   </div>
 </template>
 
 <script>
 import PacyorkyGameMobileApplication from "./components/mobileApp/PacyorkyGameMobileApplication";
-import NavBar from "@/components/desktopApp/NavBar";
+import NavBar from "@/components/general/NavBar";
+import PacyorkyGameDesktopApplication from "@/components/desktopApp/PacyorkyGameDesktopApplication";
 
 export default {
   name: 'App',
-  components: {PacyorkyGameMobileApplication, NavBar},
+  components: {PacyorkyGameDesktopApplication, PacyorkyGameMobileApplication, NavBar},
   computed: {
     isMobile: function () {
       var check = false;

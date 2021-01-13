@@ -1,4 +1,5 @@
 <template>
+  <router-view name="desktop"></router-view>
 </template>
 
 <script>

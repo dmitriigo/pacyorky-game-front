@@ -1,10 +1,12 @@
 <template>
-  <router-view name="mobile"></router-view>
+<div>
+  index page desktop
+</div>
 </template>
 
 <script>
 export default {
-  name: "PacyorkyGameMobileApplication"
+  name: "IndexDesktop"
 }
 </script>
 

@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Router from 'vue-router'
-import PacyorkyGameDesktopApplication from "../components/desktopApp/PacyorkyGameDesktopApplication";
-import PacyorkyGameMobileApplication from "../components/mobileApp/PacyorkyGameMobileApplication";
+import IndexDesktop from "@/components/desktopApp/IndexDesktop";
+import IndexMobile from "@/components/mobileApp/IndexMobile";
+import GamesDesktop from "@/components/desktopApp/GamesDesktop";
+import GamesMobile from "@/components/mobileApp/GamesMobile";
 
 
 Vue.use(Router)
@@ -11,8 +13,15 @@ export default new Router({
     {
       path: '',
       components: {
-        desktop: PacyorkyGameDesktopApplication,
-        mobile: PacyorkyGameMobileApplication
+        desktop: IndexDesktop,
+        mobile: IndexMobile
+      }
+    },
+    {
+      path:'/games',
+      components: {
+        desktop: GamesDesktop,
+        mobile: GamesMobile
       }
     }]
 })

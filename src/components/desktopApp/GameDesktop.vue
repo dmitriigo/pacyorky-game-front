@@ -2,6 +2,19 @@
   <b-container fluid>
     <b-row>
       <b-col>
+        <b-row v-if="game.started">
+          <b-col>
+            <b-row>Сейчас ходит игрок:
+              {{ thisPlayer && game.currentPlayer.id === thisPlayer.id ? 'Вы' : game.currentPlayer.name }}
+            </b-row>
+            <b-row>Следующий ход через: {{ beforeNextStep >= 0 ? beforeNextStep : 0 }}</b-row>
+            <b-row>На кубике: {{ game.counter }}</b-row>
+            <b-row v-if="thisPlayer">Ваше счастье: {{ thisPlayer.happiness }}</b-row>
+            <b-row v-if="thisPlayer">Вы находитесь на позиции: {{ thisPlayer.currentDay.deskOrder }} название:
+              {{ thisPlayer.currentDay.name }}
+            </b-row>
+          </b-col>
+        </b-row>
         <b-row>
           <p v-if="beforeGame > 0">Игра начнется в {{ game.startAt | formatDate }}</p>
           <p v-if="beforeGame > 0">через: {{ beforeGame }}</p>
@@ -71,7 +84,9 @@ export default {
         character: {}
       },
       beforeGame: 0,
-      intervalVal: undefined
+      intervalVal: undefined,
+      thisPlayer: undefined,
+      beforeNextStep: 0
     }
   },
   mounted() {
@@ -80,36 +95,63 @@ export default {
     this.intervalVal = setInterval(function () {
       axios.get('/api/games/' + self.gameId).then(response => {
         self.game = response.data;
-        self.beforeGame = Math.floor((new Date(self.game.startAt).getTime() / 1000) - (new Date().getTime() / 1000));
-        if (self.beforeGame < 0) {
+        self.beforeGame = self.getCounter(self.game.startAt);
+        self.beforeNextStep = self.getCounter(self.game.nextStepAt);
+        if (self.beforeGame < 0 && !self.game.started) {
           self.startGame();
-          clearInterval(self.intervalVal)
+        }
+        if (self.game.started) {
+          let playerId = self.$cookies.get('player');
+          if (playerId) {
+            let player = self.game.players.filter(player1 => player1.id === playerId)[0];
+            self.initPlayer(player)
+          }
+        }
+        if (self.beforeNextStep < 0) {
+          self.nextStep();
         }
       })
     }, 1000)
   },
   methods: {
+    getCounter: function (time) {
+      return Math.floor((new Date(time).getTime() / 1000) - (new Date().getTime() / 1000));
+    },
+    nextStep: function () {
+      axios.get('/api/game/' + this.gameId + '/next');
+    },
     startGame: function () {
       axios.get('/api/game/' + this.gameId + '/start').then(res => {
-        console.log(res)
         if (!res.data) {
           return;
         }
-        this.playersCards.character = res.data.character;
-        let playerDeck = res.data.deck;
-        for (let field in this.playersCards) {
-          console.log(playerDeck)
-          for (let card of playerDeck) {
-            if (card.cardType.toLowerCase() === field) {
-              this.playersCards[field].push(card);
-            }
-          }
-          console.log(field)
-        }
+        this.initPlayer(res.data)
+        this.$cookies.set('player', res.data.id);
       })
     },
     getUrl: function (path, name) {
-      return require('@/assets/cards/'+path+'/'+name+'.png')
+      return require('@/assets/cards/' + path + '/' + name + '.png')
+    },
+    initPlayersCard: function () {
+      this.playersCards = {
+        dishes: [],
+        rituals: [],
+        stuff: [],
+        character: {}
+      }
+    },
+    initPlayer: function (data) {
+      this.thisPlayer = data;
+      this.initPlayersCard();
+      this.playersCards.character = data.character;
+      let playerDeck = data.deck;
+      for (let field in this.playersCards) {
+        for (let card of playerDeck) {
+          if (card.cardType.toLowerCase() === field) {
+            this.playersCards[field].push(card);
+          }
+        }
+      }
     }
   }
 }

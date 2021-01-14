@@ -6,6 +6,7 @@ import './plugins/bootstrap-vue'
 import './plugins/axios'
 import './plugins/multi-lang'
 import './plugins/moment'
+import './plugins/cookie'
 
 
 Vue.config.productionTip = false

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {MLInstaller, MLCreate, MLanguage} from 'vue-multilanguage'
+import {MLanguage, MLCreate, MLInstaller} from 'vue-multilanguage'
 
 Vue.use(MLInstaller)
 
@@ -18,7 +18,8 @@ export default new MLCreate({
             password: 'Пароль',
             name: 'Название',
             current_players: 'Игроков сейчас',
-            join: 'Войти в игру'
+            join: 'Войти в игру',
+            exit: 'Выйти из игры'
         })
     ]
 })

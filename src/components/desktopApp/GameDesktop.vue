@@ -20,6 +20,12 @@
           <p v-if="beforeGame > 0">через: {{ beforeGame }}</p>
         </b-row>
         <b-row>
+          <b-button v-if="!playerInGame() && beforeGame > 0 && players.length < 5" @click="joinGame" class="w-auto">
+            {{ $ml.get('join') }}
+          </b-button>
+          <b-button v-if="playerInGame()" @click="exitGame" class="w-auto">{{ $ml.get('exit') }}</b-button>
+        </b-row>
+        <b-row>
           <b-col><img style="height: auto; width: 100%" :src="require('@/assets/pole/pole.png')"></b-col>
           <b-col v-if="false"><img style="height: auto; width: 100%"
                                    :src="require('@/assets/cards/character/rubashka.png')"></b-col>
@@ -86,7 +92,8 @@ export default {
       beforeGame: 0,
       intervalVal: undefined,
       thisPlayer: undefined,
-      beforeNextStep: 0
+      beforeNextStep: 0,
+      players: []
     }
   },
   mounted() {
@@ -152,6 +159,21 @@ export default {
           }
         }
       }
+    },
+    joinGame: function () {
+      axios.post('/api/game/' + this.gameId);
+    },
+    exitGame: function () {
+      axios.delete('/api/game/' + this.gameId);
+    },
+    playerInGame: function () {
+      this.players = this.game.players;
+      if (this.players.length === 0) return false;
+      const id = this.$cookies.get('playerid');
+      for (let i = 0; i < this.players.length; i++) {
+        if (this.players[i].id === id) return true;
+      }
+      return false;
     }
   }
 }

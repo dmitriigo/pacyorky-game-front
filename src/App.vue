@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     setPlayerID: function () {
-      axios.get('/api/getplayerid/').then(res => {
+      axios.get('/api/player/id/').then(res => {
         this.$cookies.set('playerid', res.data);
       })
     },

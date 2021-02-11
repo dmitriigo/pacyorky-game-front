@@ -8,11 +8,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-
+        modalStatus: false,
     },
 
     getters: {
-
+        showModalGetter(state) {
+            return state.modalStatus;
+        }
     },
 
     actions: {
@@ -20,9 +22,15 @@ export default new Vuex.Store({
             api.getGamesById().then(response => {
             })
         },
+
+        setModalStatusAction(context, status) {
+            context.commit("setModalStatusMutation", status);
+        }
     },
 
     mutations: {
-
-    }
+        setModalStatusMutation(state, status) {
+            state.modalStatus = status;
+        }
+    },
 })

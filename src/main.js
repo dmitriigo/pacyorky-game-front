@@ -9,7 +9,6 @@ import './plugins/multi-lang'
 import './plugins/moment'
 import './plugins/cookie'
 
-
 Vue.config.productionTip = false
 
 axios.interceptors.response.use(response => {

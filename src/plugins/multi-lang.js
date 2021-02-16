@@ -20,7 +20,9 @@ export default new MLCreate({
             current_players: 'Игроков сейчас',
             join: 'Войти в игру',
             exit: 'Выйти из игры',
-            INTERNAL_SERVER_ERROR: 'Произошла ошибка сервера. Пожалуйста, перезагрузите страницу!'
+            INTERNAL_SERVER_ERROR: 'Произошла ошибка сервера. Пожалуйста, перезагрузите страницу!',
+            CAPACITY_LIMIT_REACHED: 'Достигнуто максимальное количество игроков',
+            PLAYER_ALREADY_IN_GAME: 'Игрок уже в игре'
         })
     ]
 })

@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<b-modal v-model="getModalStatus" ref="my-modal">
+		<b-modal v-model="modalStatus" ref="my-modal">
 			<div class="d-block text-center">
 				<h3>Hello from My Modal!</h3>
-				<h4>Error happened: {{ $ml.get(getErrorCode) }}</h4>
+				<h4>Error happened: {{ $ml.get(errorCode) }}</h4>
 			</div>
 		</b-modal>
 	</div>
@@ -26,7 +26,17 @@ export default {
 		},
 
 		getErrorCode() {
-			return (this.errorCode = this.$store.getters.errorCodeGetter);
+			return this.$store.getters.errorCodeGetter;
+		},
+	},
+
+	watch: {
+		getModalStatus() {
+			this.modalStatus = true;
+		},
+
+		getErrorCode() {
+			this.errorCode = this.$store.getters.errorCodeGetter;
 		},
 	},
 };

@@ -9,11 +9,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         modalStatus: false,
+        errorCode: "",
     },
 
     getters: {
-        showModalGetter(state) {
+        modalStatusGetter(state) {
             return state.modalStatus;
+        },
+
+        errorCodeGetter(state) {
+            return state.errorCode;
         }
     },
 
@@ -25,12 +30,20 @@ export default new Vuex.Store({
 
         setModalStatusAction(context, status) {
             context.commit("setModalStatusMutation", status);
+        },
+
+        setErrorCodeAction(context, errorCode) {
+            context.commit("setErrorCodeMutation", errorCode);
         }
     },
 
     mutations: {
         setModalStatusMutation(state, status) {
             state.modalStatus = status;
+        },
+
+        setErrorCodeMutation(state, errorCode) {
+            state.errorCode = errorCode;
         }
     },
 })

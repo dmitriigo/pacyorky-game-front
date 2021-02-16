@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {MLanguage, MLCreate, MLInstaller} from 'vue-multilanguage'
+import { MLanguage, MLCreate, MLInstaller } from 'vue-multilanguage'
 
 Vue.use(MLInstaller)
 
@@ -19,7 +19,8 @@ export default new MLCreate({
             name: 'Название',
             current_players: 'Игроков сейчас',
             join: 'Войти в игру',
-            exit: 'Выйти из игры'
+            exit: 'Выйти из игры',
+            INTERNAL_SERVER_ERROR: 'Произошла ошибка сервера. Пожалуйста, перезагрузите страницу!'
         })
     ]
 })

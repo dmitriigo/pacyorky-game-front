@@ -6,6 +6,7 @@ import GamesDesktop from "@/components/desktopApp/GamesDesktop";
 import GamesMobile from "@/components/mobileApp/GamesMobile";
 import GameDesktop from "@/components/desktopApp/GameDesktop";
 import GameMobile from "@/components/mobileApp/GameMobile";
+import HomePage from "@/components/desktopApp/HomePage";
 
 
 Vue.use(Router)
@@ -15,19 +16,19 @@ export default new Router({
     {
       path: '',
       components: {
-        desktop: IndexDesktop,
+        desktop: HomePage,
         mobile: IndexMobile
       }
     },
     {
-      path:'/games',
+      path: '/games',
       components: {
         desktop: GamesDesktop,
         mobile: GamesMobile
       }
     },
     {
-      path:'/game/:id',
+      path: '/game/:id',
       components: {
         desktop: GameDesktop,
         mobile: GameMobile

@@ -10,7 +10,7 @@ export default new MLCreate({
         new MLanguage('Ukrainian').create({
             please_add_new_game: 'В данный момент игр нет. Добавьте новую',
             add_new_game: 'Добавить новую игру',
-            home: 'Главная',
+            home: 'главная',
             games: 'Игры',
             capacity: 'Размер комнаты',
             with_computer: 'Игра с компьютером',
@@ -22,7 +22,14 @@ export default new MLCreate({
             exit: 'Выйти из игры',
             INTERNAL_SERVER_ERROR: 'Произошла ошибка сервера. Пожалуйста, перезагрузите страницу!',
             CAPACITY_LIMIT_REACHED: 'Достигнуто максимальное количество игроков',
-            PLAYER_ALREADY_IN_GAME: 'Игрок уже в игре'
+            PLAYER_ALREADY_IN_GAME: 'Игрок уже в игре',
+            about_project: "о проекте",
+            game_description: "описание игры",
+            game_rules: "правила игры",
+            board_game: "настольная игра",
+            start_game: "начать игру",
+            contacts: "контакты",
+            sponsors: "нас поддерживают"
         })
     ]
 })

@@ -29,7 +29,9 @@ export default new MLCreate({
             board_game: "настольная игра",
             start_game: "начать игру",
             contacts: "контакты",
-            sponsors: "нас поддерживают"
+            sponsors: "нас поддерживают",
+            home_page_text_middle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
+            copyright_footer: "©2021 Українське Земляцтво Сілламяе «Водограй»"
         })
     ]
 })

@@ -1,7 +1,7 @@
 <template>
-	<div id="home-page" class="h-100">
-		<b-container class="main-container h-50">
-			<b-row cols="1" class="h-100 d-flex align-content-between">
+	<div id="home-page" class="h-75">
+		<b-container fluid class="main-container h-100">
+			<b-row cols="1" class="h-75 d-flex align-content-around">
 				<b-col>
 					<img
 						src="@/assets/home-page/family-home-page.png"
@@ -11,7 +11,7 @@
 
 				<b-col>
 					<p class="text-center text-in-middle">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
+						{{ $ml.get("home_page_text_middle") }}
 					</p>
 				</b-col>
 
@@ -26,13 +26,20 @@
 </template>
 
 <script>
+import NavBar from "@/components/general/NavBar";
+import MainFooter from "@/components/general/MainFooter";
+
 export default {
 	name: "HomePage",
+	components: {
+		NavBar,
+		MainFooter,
+	},
 };
 </script>
 
 <style scoped>
-#home-page {
+.main-container {
 	background-color: #ffffff;
 	background: url("../../assets/home-page/background-patterns.png") top center
 		no-repeat;

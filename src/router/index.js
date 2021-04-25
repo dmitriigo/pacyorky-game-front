@@ -1,12 +1,11 @@
 import Vue from "vue";
 import Router from 'vue-router'
-import IndexDesktop from "@/components/desktopApp/IndexDesktop";
-import IndexMobile from "@/components/mobileApp/IndexMobile";
 import GamesDesktop from "@/components/desktopApp/GamesDesktop";
-import GamesMobile from "@/components/mobileApp/GamesMobile";
 import GameDesktop from "@/components/desktopApp/GameDesktop";
-import GameMobile from "@/components/mobileApp/GameMobile";
 import HomePage from "@/components/desktopApp/HomePage";
+import GameDescription from "@/components/desktopApp/GameDescription";
+import BoardGame from "@/components/desktopApp/BoardGame";
+import GameRules from "@/components/desktopApp/GameRules";
 
 
 Vue.use(Router)
@@ -14,24 +13,32 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '',
-      components: {
-        desktop: HomePage,
-        mobile: IndexMobile
-      }
+      path: '/',
+      component: HomePage,
     },
+
+    {
+      path: "/game-description",
+      component: GameDescription,
+    },
+
+    {
+      path: "/game-rules",
+      component: GameRules,
+    },
+
+    {
+      path: "/board-game",
+      component: BoardGame,
+    },
+
     {
       path: '/games',
-      components: {
-        desktop: GamesDesktop,
-        mobile: GamesMobile
-      }
+      component: GamesDesktop,
     },
+
     {
       path: '/game/:id',
-      components: {
-        desktop: GameDesktop,
-        mobile: GameMobile
-      }
+      component: GameDesktop,
     }]
 })

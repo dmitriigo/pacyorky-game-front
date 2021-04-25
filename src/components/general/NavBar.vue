@@ -6,28 +6,36 @@
 
 				<b-collapse id="nav-collapse" is-nav>
 					<b-navbar-nav class="w-100 d-flex align-items-center">
-						<b-row class=" w-100 mx-0">
+						<b-row class="w-100 mx-0">
 							<b-col cols="3">
-								<b-nav-item href="#">
-									<p>{{ $ml.get("home") }}</p>
+								<b-nav-item>
+									<b-link to="/">
+										<p>{{ $ml.get("home") }}</p>
+									</b-link>
 								</b-nav-item>
 							</b-col>
 
 							<b-col cols="3">
-								<b-nav-item href="#">
-									<p>{{ $ml.get("game_description") }}</p>
+								<b-nav-item>
+									<b-link to="/game-description">
+										<p>{{ $ml.get("game_description") }}</p>
+									</b-link>
 								</b-nav-item>
 							</b-col>
 
 							<b-col cols="3">
-								<b-nav-item href="#">
-									<p>{{ $ml.get("game_rules") }}</p>
+								<b-nav-item>
+									<b-link to="/game-rules">
+										<p>{{ $ml.get("game_rules") }}</p>
+									</b-link>
 								</b-nav-item>
 							</b-col>
 
 							<b-col cols="3">
-								<b-nav-item href="#">
-									<p>{{ $ml.get("board_game") }}</p>
+								<b-nav-item>
+									<b-link to="/board-game">
+										<p>{{ $ml.get("board_game") }}</p>
+									</b-link>
 								</b-nav-item>
 							</b-col>
 						</b-row>

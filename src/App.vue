@@ -1,9 +1,10 @@
 <template>
 	<div id="app">
 		<NavBar></NavBar>
-		<HomePage></HomePage>
-		<ErrorModal></ErrorModal>
+		<!-- <HomePage></HomePage> -->
+		<!-- <ErrorModal></ErrorModal> -->
 		<MainFooter></MainFooter>
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -13,6 +14,9 @@ import axios from "axios";
 import NavBar from "@/components/general/NavBar";
 import HomePage from "@/components/desktopApp/HomePage";
 import MainFooter from "@/components/general/MainFooter";
+import GameDescription from "@/components/desktopApp/GameDescription";
+import BoardGame from "@/components/desktopApp/BoardGame";
+import GameRules from "@/components/desktopApp/GameRules";
 
 export default {
 	name: "App",
@@ -21,6 +25,9 @@ export default {
 		NavBar,
 		HomePage,
 		MainFooter,
+		GameDescription,
+		GameRules,
+		BoardGame,
 	},
 	mounted() {
 		this.setPlayerID();
@@ -41,7 +48,6 @@ export default {
 <style lang="less">
 #app {
 	height: 100%;
-	overflow: hidden;
 }
 
 @font-face {

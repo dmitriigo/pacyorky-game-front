@@ -1,7 +1,7 @@
 <template>
 	<div id="home-page" class="h-75">
-		<b-container fluid class="main-container h-100">
-			<b-row cols="1" class="h-75 d-flex align-content-around">
+		<b-container fluid class="main-container h-75">
+			<b-row cols="1" class="h-100 d-flex align-content-around">
 				<b-col>
 					<img
 						src="@/assets/home-page/family-home-page.png"
@@ -78,5 +78,12 @@ p {
 
 .family-picture {
 	width: max(400px, 30vw);
+}
+
+@media (max-width: 991.98px) {
+	.main-container {
+		background: url("../../assets/home-page/background-patterns.png") center;
+		background-size: 150vw;
+	}
 }
 </style>

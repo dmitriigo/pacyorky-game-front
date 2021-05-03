@@ -3,8 +3,8 @@
 		<NavBar></NavBar>
 		<!-- <HomePage></HomePage> -->
 		<!-- <ErrorModal></ErrorModal> -->
-		<MainFooter></MainFooter>
 		<router-view></router-view>
+		<MainFooter></MainFooter>
 	</div>
 </template>
 

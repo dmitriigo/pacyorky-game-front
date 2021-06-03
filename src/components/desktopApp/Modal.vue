@@ -179,11 +179,13 @@ export default {
 		},
 
 		onSubmit() {
-			api.createRoom(this.roomForm).then((response) => {
-				if (response) {
-					this.$emit("close");
-				}
-			});
+			if (this.roomForm.name) {
+				api.createRoom(this.roomForm).then((response) => {
+					if (response) {
+						this.$emit("close");
+					}
+				});
+			}
 		},
 
 		capacityIncrease() {

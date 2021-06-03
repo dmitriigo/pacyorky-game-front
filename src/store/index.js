@@ -3,13 +3,19 @@ import Vuex, { Store } from 'vuex'
 import api from "@/api/api"
 import axios from "axios"
 import bootstrap from "bootstrap"
+import roomModule from "./modules/roomModule"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    modules: {
+        roomModule
+    },
+
     state: {
         modalStatus: false,
         errorCode: "",
+        listOfActiveRooms: [],
     },
 
     getters: {
@@ -19,6 +25,10 @@ export default new Vuex.Store({
 
         errorCodeGetter(state) {
             return state.errorCode;
+        },
+
+        listOfActiveRoomsGetter(state) {
+            return state.listOfActiveRooms;
         }
     },
 
@@ -34,6 +44,12 @@ export default new Vuex.Store({
 
         setErrorCodeAction(context, errorCode) {
             context.commit("setErrorCodeMutation", errorCode);
+        },
+
+        setRoomAction(context, room) {
+            api.getRooms().then(response => {
+                context.commit("setRoomMutation", response)
+            })
         }
     },
 
@@ -44,6 +60,10 @@ export default new Vuex.Store({
 
         setErrorCodeMutation(state, errorCode) {
             state.errorCode = errorCode;
+        },
+
+        setRoomMutation(state, room) {
+            state.listOfActiveRooms = room;
         }
     },
 })

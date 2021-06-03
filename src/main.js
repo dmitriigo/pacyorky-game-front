@@ -23,5 +23,8 @@ axios.interceptors.response.use(response => {
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    this.$store.dispatch("setRoomAction");
+  }
 }).$mount('#app')

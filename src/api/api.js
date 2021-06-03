@@ -21,10 +21,17 @@ export default {
     async createRoom(roomObj) {
         try {
             let response = await axios.post("api/rooms/add", roomObj)
+            console.log(response)
             return response;
         }
         catch (error) {
-            console.log(error)
+            if (error.response) {
+                console.log("error response")
+                console.log(error.response.data)
+            } else {
+                console.log("error")
+                console.log(error)
+            }
         }
     }
 }

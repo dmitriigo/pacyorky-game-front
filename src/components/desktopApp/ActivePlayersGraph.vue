@@ -83,7 +83,6 @@ export default {
 					this.man4 = true;
 					break;
 				default:
-					console.log("No players active");
 			}
 		},
 	},

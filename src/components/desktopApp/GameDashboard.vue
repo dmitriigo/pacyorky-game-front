@@ -9,7 +9,7 @@
 					<img src="#" />
 				</div>
 
-				<b-button @click="modalShow = !modalShow" class="game-btns mt-5">
+				<b-button @click="showCreateRoomModal = !showCreateRoomModal" class="game-btns mt-5">
 					<p style="color: white" class="mb-0">
 						{{ $ml.get("create_new_room") }}
 					</p>
@@ -24,15 +24,18 @@
 				<div
 					class="d-flex flex-column justify-content-start flex-grow-1 active-games-list px-3 py-1"
 				>
-					<ActivePlayersGraph
+					<ActiveRoomsGraph
 						v-for="item in getActiveRoomsAndSortByPlayersCountAsc"
 						:key="item.id"
 						:activePlayersCount="item.players.length"
 						:activeRoomName="item.name"
-					></ActivePlayersGraph>
+						:currentRoom="item"
+						@current-room-click="currentRoom = $event"
+					></ActiveRoomsGraph>
 				</div>
 
 				<b-button
+					@click="showJoinRoomModal = !showJoinRoomModal"
 					class="game-btns join mt-5"
 					style="background-color: white; border: 4px solid #35838d"
 				>
@@ -43,26 +46,41 @@
 			</b-col>
 		</b-row>
 
-		<Modal :isModalShown="modalShow" @close="modalShow = !modalShow"></Modal>
+		<CreateRoomModal
+			:isModalShown="showCreateRoomModal"
+			@close="showCreateRoomModal = !showCreateRoomModal"
+		>
+		</CreateRoomModal>
+
+		<JoinRoomModal
+			:isModalShown="showJoinRoomModal"
+			:currentRoom="currentRoom"
+			@close="showJoinRoomModal = !showJoinRoomModal"
+		>
+		</JoinRoomModal>
 	</b-container>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import ActivePlayersGraph from "@/components/desktopApp/ActivePlayersGraph";
-import Modal from "@/components/desktopApp/Modal";
+import ActiveRoomsGraph from "@/components/desktopApp/ActiveRoomsGraph";
+import CreateRoomModal from "@/components/desktopApp/CreateRoomModal";
+import JoinRoomModal from "@/components/desktopApp/JoinRoomModal";
 
 export default {
 	name: "GameDashboard",
 
 	components: {
-		ActivePlayersGraph,
-		Modal,
+		ActiveRoomsGraph,
+		CreateRoomModal,
+		JoinRoomModal,
 	},
 
 	data() {
 		return {
-			modalShow: false,
+			showCreateRoomModal: false,
+			showJoinRoomModal: false,
+			currentRoom: {},
 		};
 	},
 
@@ -113,7 +131,7 @@ p {
 
 .active-games-list {
 	box-sizing: border-box;
-	width: max(12vw, 217.4px);
+	width: max(17vw, 217.4px);
 	border: 1px solid #35838d;
 	border-radius: 10px;
 }
@@ -126,6 +144,10 @@ p {
 		border: 1px solid #35838d;
 		border-radius: 10px;
 	}
+
+	.active-games-list {
+		width: 280px;
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -136,11 +158,12 @@ p {
 	}
 
 	.game-btns {
-		box-sizing: border-box;
 		height: 55px;
-		border-radius: 10px;
-		border: 0;
-		background-color: #5f9da5;
+	}
+
+	.game-btns.join {
+		width: 350px;
+		align-self: center;
 	}
 
 	.middle-gif {
@@ -152,15 +175,7 @@ p {
 	}
 
 	.active-games-list {
-		box-sizing: border-box;
-		width: 250px;
-		border: 1px solid #35838d;
-		border-radius: 10px;
-		align-self: center;
-	}
-
-	.game-btns.join {
-		width: 250px;
+		width: 350px;
 		align-self: center;
 	}
 }

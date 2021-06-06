@@ -17,8 +17,9 @@ import GameDescription from "@/components/desktopApp/GameDescription";
 import BoardGame from "@/components/desktopApp/BoardGame";
 import GameRules from "@/components/desktopApp/GameRules";
 import GameDashboard from "@/components/desktopApp/GameDashboard";
-import ActivePlayersGraph from "@/components/desktopApp/ActivePlayersGraph";
-import Modal from "@/components/desktopApp/Modal";
+import ActiveRoomsGraph from "@/components/desktopApp/ActiveRoomsGraph";
+import CreateRoomModal from "@/components/desktopApp/CreateRoomModal";
+import JoinRoomModal from "@/components/desktopApp/JoinRoomModal";
 
 export default {
 	name: "app",
@@ -31,8 +32,9 @@ export default {
 		GameRules,
 		BoardGame,
 		GameDashboard,
-		ActivePlayersGraph,
-		Modal,
+		ActiveRoomsGraph,
+		CreateRoomModal,
+		JoinRoomModal,
 	},
 	mounted() {
 		this.setPlayerID();

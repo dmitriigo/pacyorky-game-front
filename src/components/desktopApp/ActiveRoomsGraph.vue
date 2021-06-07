@@ -186,11 +186,6 @@ p {
 	color: black;
 }
 
-p:hover {
-	font-size: 20px;
-	font-weight: bold;
-}
-
 .room-entry {
 	height: 4.2vh;
 }

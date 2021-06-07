@@ -24,14 +24,20 @@
 				<div
 					class="d-flex flex-column justify-content-start flex-grow-1 active-games-list px-3 py-1"
 				>
-					<ActiveRoomsGraph
-						v-for="item in getActiveRoomsAndSortByPlayersCountAsc"
-						:key="item.id"
-						:activePlayersCount="item.players.length"
-						:activeRoomName="item.name"
-						:currentRoom="item"
-						@current-room-click="currentRoom = $event"
-					></ActiveRoomsGraph>
+					<div>
+						<ActiveRoomsGraph
+							v-for="item in getActiveRoomsAndSortByPlayersCountAsc"
+							:key="item.id"
+							:activePlayersCount="item.players.length"
+							:activeRoomName="item.name"
+							:currentRoom="item"
+							:class="currentRoomId == item.id ? 'animateRoomClass' : ''"
+							@current-room-click="
+								currentRoom = $event;
+								currentRoomId = item.id;
+							"
+						></ActiveRoomsGraph>
+					</div>
 				</div>
 
 				<b-button
@@ -81,6 +87,7 @@ export default {
 			showCreateRoomModal: false,
 			showJoinRoomModal: false,
 			currentRoom: {},
+			currentRoomId: 0,
 		};
 	},
 
@@ -104,6 +111,8 @@ export default {
 				.slice(0, 6);
 		},
 	},
+
+	methods: {},
 };
 </script>
 
@@ -122,6 +131,13 @@ p {
 	background-color: #5f9da5;
 }
 
+.active-games-list {
+	box-sizing: border-box;
+	width: max(17vw, 217.4px);
+	border: 1px solid #35838d;
+	border-radius: 10px;
+}
+
 .middle-gif {
 	width: max(24vw, 237px);
 	height: max(15vw, 202px);
@@ -129,11 +145,9 @@ p {
 	border-radius: 10px;
 }
 
-.active-games-list {
-	box-sizing: border-box;
-	width: max(17vw, 217.4px);
-	border: 1px solid #35838d;
-	border-radius: 10px;
+.animateRoomClass {
+	font-weight: bold;
+	color: blue;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {

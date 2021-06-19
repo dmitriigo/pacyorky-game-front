@@ -6,6 +6,7 @@ import HomePage from "@/components/desktopApp/HomePage";
 import GameDescription from "@/components/desktopApp/GameDescription";
 import BoardGame from "@/components/desktopApp/BoardGame";
 import GameRules from "@/components/desktopApp/GameRules";
+import GameDashboard from "@/components/desktopApp/GameDashboard"
 
 
 Vue.use(Router)
@@ -30,6 +31,11 @@ export default new Router({
     {
       path: "/board-game",
       component: BoardGame,
+    },
+
+    {
+      path: "/game-dashboard",
+      component: GameDashboard,
     },
 
     {

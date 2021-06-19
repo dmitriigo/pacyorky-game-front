@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<NavBar></NavBar>
-		<!-- <HomePage></HomePage> -->
 		<!-- <ErrorModal></ErrorModal> -->
 		<router-view></router-view>
 		<MainFooter></MainFooter>
@@ -17,9 +16,13 @@ import MainFooter from "@/components/general/MainFooter";
 import GameDescription from "@/components/desktopApp/GameDescription";
 import BoardGame from "@/components/desktopApp/BoardGame";
 import GameRules from "@/components/desktopApp/GameRules";
+import GameDashboard from "@/components/desktopApp/GameDashboard";
+import ActiveRoomsGraph from "@/components/desktopApp/ActiveRoomsGraph";
+import CreateRoomModal from "@/components/desktopApp/CreateRoomModal";
+import JoinRoomModal from "@/components/desktopApp/JoinRoomModal";
 
 export default {
-	name: "App",
+	name: "app",
 	components: {
 		ErrorModal,
 		NavBar,
@@ -28,6 +31,10 @@ export default {
 		GameDescription,
 		GameRules,
 		BoardGame,
+		GameDashboard,
+		ActiveRoomsGraph,
+		CreateRoomModal,
+		JoinRoomModal,
 	},
 	mounted() {
 		this.setPlayerID();

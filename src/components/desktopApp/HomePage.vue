@@ -16,7 +16,7 @@
 				</b-col>
 
 				<b-col>
-					<b-button class="start-game-btn">
+					<b-button to="/game-dashboard" class="start-game-btn">
 						<p>{{ $ml.get("start_game") }}</p>
 					</b-button>
 				</b-col>
@@ -26,15 +26,9 @@
 </template>
 
 <script>
-import NavBar from "@/components/general/NavBar";
-import MainFooter from "@/components/general/MainFooter";
-
 export default {
 	name: "HomePage",
-	components: {
-		NavBar,
-		MainFooter,
-	},
+	components: {},
 };
 </script>
 
@@ -68,7 +62,6 @@ p {
 }
 
 .start-game-btn {
-	display: inline-block;
 	width: max(200px, 15vw);
 	border-radius: 10px;
 	background-color: #35838d;

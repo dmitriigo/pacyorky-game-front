@@ -4,25 +4,21 @@ export default {
 
     async getRooms() {
         try {
-            let response = await axios.get("api/rooms/get");
-            return response;
+            return await axios.get("api/rooms/get");
         }
         catch (error) { }
     },
 
     async getGamesById(id) {
         try {
-            let response = await axios.get("api/rooms/get/" + id);
-            return response;
+            return await axios.get("api/rooms/get/" + id);
         }
         catch (error) { }
     },
 
     async createRoom(roomObj) {
         try {
-            let response = await axios.post("api/rooms/add", roomObj)
-            console.log(response)
-            return response;
+            return await axios.post("api/rooms/add", roomObj);
         }
         catch (error) {
             if (error.response) {

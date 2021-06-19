@@ -1,8 +1,6 @@
 import Vue from 'vue'
-import Vuex, { Store } from 'vuex'
+import Vuex from 'vuex'
 import api from "@/api/api"
-import axios from "axios"
-import bootstrap from "bootstrap"
 import roomModule from "./modules/roomModule"
 
 Vue.use(Vuex)

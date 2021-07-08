@@ -35,15 +35,18 @@
 							@current-room-click="
 								currentRoom = $event;
 								currentRoomId = item.id;
+								roomSelected = true;
 							"
 						></ActiveRoomsGraph>
 					</div>
 				</div>
+				<p v-if="roomSelected == false" class="validation-def-style">Please select one.</p>
 
 				<b-button
 					@click="showJoinRoomModal = !showJoinRoomModal"
 					class="game-btns join mt-5"
 					style="background-color: white; border: 4px solid #35838d"
+					:disabled="roomSelected == false"
 				>
 					<p class="mb-0">
 						{{ $ml.get("join") }}
@@ -88,6 +91,7 @@ export default {
 			showJoinRoomModal: false,
 			currentRoom: {},
 			currentRoomId: 0,
+			roomSelected: false,
 		};
 	},
 
@@ -131,6 +135,17 @@ p {
 	background-color: #5f9da5;
 }
 
+.validation-def-style {
+	font-size: 90%;
+	margin-bottom: 0;
+	position: absolute;
+	top: 355px;
+	color: #dc3545;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		"Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .active-games-list {
 	box-sizing: border-box;
 	width: max(17vw, 217.4px);
@@ -147,7 +162,6 @@ p {
 
 .animateRoomClass {
 	font-weight: bold;
-	color: blue;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -161,6 +175,11 @@ p {
 
 	.active-games-list {
 		width: 280px;
+	}
+
+	.validation-def-style {
+		font-size: 75%;
+		top: 253px;
 	}
 }
 
@@ -191,6 +210,26 @@ p {
 	.active-games-list {
 		width: 350px;
 		align-self: center;
+	}
+
+	.validation-def-style {
+		font-size: 90%;
+		top: 304px;
+	}
+}
+
+@media (min-width: 1199.98px) and (max-width: 1600px) {
+	.middle-gif {
+		height: 213px;
+	}
+
+	.active-games-list {
+		width: 260px;
+	}
+
+	.validation-def-style {
+		font-size: 75%;
+		top: 217px;
 	}
 }
 </style>
